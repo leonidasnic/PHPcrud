@@ -4,6 +4,7 @@ $usuarios = ControladorForularios::ctrSeleccionarRegistro();
 <table class="table table-striped py-5">
     <thead>
       <tr>
+        <th>#</th>
         <th>Nombre</th>
         <th>email</th>
         <th>Password</th>
@@ -13,6 +14,7 @@ $usuarios = ControladorForularios::ctrSeleccionarRegistro();
     <tbody>
       <?php foreach ($usuarios as $key => $value): ?>
          <tr>
+          <td><?php echo($key+1)?></td>
         <td><?php echo $value["nombre"] ?></td>
         <td><?php echo $value["email"] ?></td>
         <td><?php echo $value["fecha"] ?></td>
