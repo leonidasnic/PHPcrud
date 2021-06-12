@@ -1,15 +1,26 @@
-<h1>Ingreso</h1>
- <form action="/action_page.php">
+
+<div class="d-flex justify-content-center">
+
+<form  cflass="bg-light p-1" method="post">
+ 
+
   <div class="form-group">
-    <label for="email">Email address:</label>
-    <input type="email" class="form-control" id="email">
+    <label for="email">email</label>
+    <input type="email" class="form-control" id="email" name="ingresoEmail">
   </div>
+
   <div class="form-group">
     <label for="pwd">Password:</label>
-    <input type="password" class="form-control" id="pwd">
+    <input type="password" class="form-control" id="pwd" name="ingresoPassword">
   </div>
-  <div class="checkbox">
-    <label><input type="checkbox"> Remember me</label>
-  </div>
-  <button type="submit" class="btn btn-default">Submit</button>
-</form>   
+<?php 
+$ingreso = new ControladorForularios();
+$ingreso -> ctrIngreso();
+
+
+
+?>
+  <button type="submit" class="btn btn-primary">Ingresar</button>
+</form>  
+ 
+</div>
