@@ -34,7 +34,7 @@ class ModeloFormulario{
 
 	static public function mdlSeleccionarResgistro($tabla){
 
-		$stmt = Conexion::conectar()->prepare("SELECT * FROM $tabla");
+		$stmt = Conexion::conectar()->prepare("SELECT *,DATE_FORMAT(fecha, '%d/%m/%y') AS fecha FROM $tabla ORDER BY id DESC");
 
 		$stmt->execute();
 		return $stmt -> fetchAll();
