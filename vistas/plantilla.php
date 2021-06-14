@@ -1,3 +1,8 @@
+
+<?php 
+
+session_start();
+ ?>
 <!doctype html>
 <html lang="en">
 <head>
@@ -89,6 +94,7 @@
 				          	  $_GET['pagina']=="salir" || 
 				          	  $_GET['pagina']=="inicio")
 							          	{
+							          		
 
 							          		include "paginas/".$_GET["pagina"].".php";
 							          }else{
