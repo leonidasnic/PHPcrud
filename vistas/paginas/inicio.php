@@ -16,7 +16,10 @@ if (!isset($_SESSION['validarIngreso'])) {
   }
 
 
-$usuarios = ControladorForularios::ctrSeleccionarRegistro();
+$usuarios = ControladorForularios::ctrSeleccionarRegistro(null,null);
+
+
+
 ?>
 <table class="table table-striped py-5">
     <thead>
@@ -37,8 +40,8 @@ $usuarios = ControladorForularios::ctrSeleccionarRegistro();
         <td><?php echo $value["fecha"] ?></td>
         <td>
           <div class="btn-group">
-            <button class="btn btn-warning"><i class="fas fa-pencil-alt"></i></button>
-            <button class="btn btn-danger"><i class="fas fa-trash-alt"></i></button>
+            <a href="index.php?pagina=editar&id=<?php echo $value["id"] ?>" class="btn btn-warning"><i class="fas fa-pencil-alt"></i></a>
+            <a class="btn btn-danger"><i class="fas fa-trash-alt"></i></a>
           </div>
         </td>
       </tr>

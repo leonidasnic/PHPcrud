@@ -92,7 +92,7 @@ session_start();
 				          	if($_GET['pagina']=="registro" ||
 				          	 $_GET['pagina']=="ingreso" ||
 				          	  $_GET['pagina']=="salir" || 
-				          	  $_GET['pagina']=="inicio")
+				          	  $_GET['pagina']=="inicio" || $_GET['pagina'] == "editar")
 							          	{
 							          		
 
