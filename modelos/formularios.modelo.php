@@ -35,22 +35,28 @@ class ModeloFormulario{
 	static public function mdlSeleccionarResgistro($tabla,$item,$valor){
 
 		if ($item == null || $valor == null) {
-			// code...
+			
 		
 
 		$stmt = Conexion::conectar()->prepare("SELECT *,DATE_FORMAT(fecha, '%d/%m/%y') AS fecha FROM $tabla ORDER BY id DESC");
 
 		$stmt->execute();
+
 		return $stmt -> fetchAll();
 
 		
 		}else{
 
-			$stmt = Conexion::conectar()->prepare("SELECT *,DATE_FORMAT(fecha, '%d/%m/%y') AS fecha FROM $tabla WHERE $item = :$item ORDER BY id DESC");
+			$stmt = Conexion::conectar()->prepare("SELECT * FROM $tabla WHERE $item = :$item");
+
 			$stmt -> bindParam(":".$item, $valor,PDO::PARAM_STR);
 
-		$stmt->execute();
-		return $stmt -> fetch(); 
+				IF($stmt->execute()){
+					return $stmt -> fetch();
+				}else{
+					print_r(Conexion:conectar()->erorInfor());
+				}
+ 
 
 		}
 
@@ -64,7 +70,7 @@ class ModeloFormulario{
 
 	static public function mdlActualizarRegistro($tabla,$datos){
 
-		$stmt = Conexion::conectar()->prepare("UPDATE $tabla SET nombre =:nombre, email=:email, password=:password) WHERE id=:id");
+		$stmt = Conexion::conectar()->prepare("UPDATE $tabla SET nombre =:nombre, email=:email, password=:password WHERE id=:id");
 
 		#bindparam() vincula una variable php a un 
 		$stmt->bindParam(":nombre",$datos["nombre"],PDO::PARAM_STR);
@@ -80,5 +86,29 @@ class ModeloFormulario{
 		$stmt -> close();
 		$stmt = null;
 	}
+
+	/*=========================================
+	=            Eliminar Registro            =
+	=========================================*/
+	
+	static public function mdlElimnarRegistro($tabla,$valor){
+
+		$stmt = Conexion::conectar()->prepare("DELETE FROM $tabla WHERE id= :id");
+
+		#bindparam() vincula una variable php a un 
+		$stmt->bindParam(":id",$valor,PDO::PARAM_INT);
+
+		IF($stmt->execute()){
+			return "ok";
+		}else{
+			print_r(Conexion:conectar()->erorInfor());
+		}
+
+		$stmt -> close();
+		$stmt = null;
+
+	}
+	
+	
 	
 }

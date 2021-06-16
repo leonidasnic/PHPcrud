@@ -26,17 +26,21 @@
   </div>
 <?php 
 $registro = ControladorForularios::ctrRegistro();
-if ($registro == "ok") {
 
-echo '<script>
+      if ($registro == "ok") {
 
-if( window.history.replaceState){
-  window.history.replaceState(null, null, window.location.href )
-}
-</script>';
+          echo '<script>
 
-echo '<div class="alert alert-success">El registro a sido guardado exitosamente</div>';
-}
+          if( window.history.replaceState){
+            window.history.replaceState(null, null, window.location.href )
+          }
+          </script>';
+
+          echo '<div class="alert alert-success">El registro a sido guardado exitosamente</div>';
+          }
+          if ($registro == "eror") {
+            echo '<div class="alert alert-danger">No es permitido caracteres especiales</div>';
+      }
 
 ?>
   <button type="submit" class="btn btn-primary">Enviar</button>

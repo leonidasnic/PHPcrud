@@ -39,9 +39,27 @@ $usuarios = ControladorForularios::ctrSeleccionarRegistro(null,null);
         <td><?php echo $value["email"] ?></td>
         <td><?php echo $value["fecha"] ?></td>
         <td>
-          <div class="btn-group">
+          <div class="btn-group">     
+
+            <div class="px-1">
             <a href="index.php?pagina=editar&id=<?php echo $value["id"] ?>" class="btn btn-warning"><i class="fas fa-pencil-alt"></i></a>
-            <a class="btn btn-danger"><i class="fas fa-trash-alt"></i></a>
+            </div>
+
+          
+            <form method="POST">
+
+              <input type="hidden" name="EliminarRegistro" value="<?php echo $value["id"] ?>" >
+              <button type="submit" class="btn btn-danger"><i class="fas fa-trash-alt"></i></button>
+
+              <?php 
+              $elimiar = new ControladorForularios();
+
+              $elimiar -> ctrEliminarRegistro();
+              ?>
+
+
+            </form>
+          
           </div>
         </td>
       </tr>
