@@ -42,13 +42,13 @@ $usuarios = ControladorForularios::ctrSeleccionarRegistro(null,null);
           <div class="btn-group">     
 
             <div class="px-1">
-            <a href="index.php?pagina=editar&id=<?php echo $value["id"] ?>" class="btn btn-warning"><i class="fas fa-pencil-alt"></i></a>
+            <a href="index.php?pagina=editar&token=<?php echo $value["token"] ?>" class="btn btn-warning"><i class="fas fa-pencil-alt"></i></a>
             </div>
 
           
             <form method="POST">
 
-              <input type="hidden" name="EliminarRegistro" value="<?php echo $value["id"] ?>" >
+              <input type="hidden" name="EliminarRegistro" value="<?php echo $value["token"] ?>" >
               <button type="submit" class="btn btn-danger"><i class="fas fa-trash-alt"></i></button>
 
               <?php 

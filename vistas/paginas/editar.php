@@ -1,8 +1,8 @@
 
 <?php
-if (isset($_GET['id'])) {
-  $item = "id";
-  $valor = $_GET['id'];
+if (isset($_GET['token'])) {
+  $item = "token";
+  $valor = $_GET['token'];
 
 
 
@@ -39,7 +39,7 @@ if (isset($_GET['id'])) {
 
   <input type="hidden" name="passwordActual" value="<?php echo $usuarios["password"] ?>">
 
-  <input type="hidden" name="idUsuario" value="<?php echo $usuarios["id"] ?>">
+  <input type="hidden" name="tokenUsuario" value="<?php echo $usuarios["token"] ?>">
 <?php 
 
 $actualizar  = ControladorForularios::ctrActualizarRegistro();
@@ -55,6 +55,19 @@ $actualizar  = ControladorForularios::ctrActualizarRegistro();
       window.location = "index.php?pagina=inicio";
     },3000)  </script>';
   }
+  if ($actualizar == "eror") {
+    echo '<script>
+    if(window.history.replaceState){
+      window.history.replaceState(null, null, window.location.href );
+
+    }
+    </script>';
+    echo '<div class="alert alert-danger"> Eror al actualizar el usuario </div>' ;
+     echo '<script> setTimeout(function(){
+      window.location = "index.php?pagina=inicio";
+    },3000)  </script>';
+  }
+
 
 /*$registro = ControladorForularios::ctrRegistro();
 if ($registro == "ok") {
